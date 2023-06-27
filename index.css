@@ -1,0 +1,21 @@
+.logo{
+    width: 7%;
+    height: 5%;
+    
+}
+.card-img-top{
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+}
+.navbar{
+  background-color: rgb(40, 40, 204);
+}
+.txtt{
+  background: linear-gradient(to left,#515153,#9f9fa1);
+}
+.t-price{
+  color:   white;
+  cursor:not-allowed;
+}
+

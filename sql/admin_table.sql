@@ -1,0 +1,1 @@
+create table admin_table(admin_id int primary key auto_increment,admin_name varchar(100),admin_email varchar(255),admin_password varchar(255));

@@ -1,0 +1,2 @@
+create table user_table(user_id int primary key auto_increment,user_name varchar(255),user_email varchar(255),user_password varchar(255),
+user_image varchar(255),user_ip varchar(100),user_address varchar(100),user_mobile varchar(20));
