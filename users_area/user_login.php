@@ -6,52 +6,91 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>User Registration</title>
-
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
    <style>
       body {
          overflow-x: hidden;
+        background-color: #3800ff12;
       }
+      .btn {
+      border: 2px solid blue;
+      background-color: blue;
+      color: white;
+      transition: 0.3s;
+      font-weight: bolder;
+    }
+
+    .btn:hover {
+      background-color: white;
+      border: 2px solid blue;
+      color: blue;
+      font-weight: bolder;
+
+    }
+      .lin {
+      background: linear-gradient(15deg, red, blue);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .form-control {
+      border: none;
+      border-bottom: 2px solid blue;
+      
+      /* transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out; */
+    }
+
+    .form-control:hover {
+      color: blue;
+     
+    }
    </style>
 
 </head>
 
 <body>
-   <div class="container-fluid mt-5">
-      <h2 class="text-center"> User Login</h2>
-      <div class="row d-flex align-item-center justify-content-center mt-5">
-         <div class="col-lg-12 col-xl-6">
+   <!-- second -->
+   <div class="container-fluid m-3">
+      <h2 class="text-center mb-5 lin">USER LOGIN </h2>
+      <div class="row d-flex justify-content-center">
+         <div class="col-lg-6 col-xl-5">
+            <img src="../img/user.png" alt="Admin Registration" class="img-fluid">
+         </div>
+         <div class="col-lg-6 col-xl-4">
             <form action="user_login.php" method="post">
-               <div class="form-outline mb-4">
+               <div class="form-outline mb-4"  data-aos="fade-in">
                   <!--username fieled-->
                   <label for="user_username" class="form-label">Username</label>
-                  <input type="text" name="user_username" id="user_username" class="form-control" />
+                  <input type="text" name="user_username" id="user_username" placeholder="Enter Username"
+                     class="form-control " />
                </div>
 
-
-               <div class="form-outline">
+               <div class="form-outline mb-4"  data-aos="fade-in">
                   <!--user password-->
                   <label for="user_password" class="form-label">password</label>
-                  <input type="password" name="user_password" id="user_password" class="form-control" />
+                  <input type="password" name="user_password" id="user_password" placeholder="Enter Password"
+                     class="  form-control" />
                </div>
 
-
-               <div class="mt-4 pt-2">
-                  <input type="submit" value="Login" class="bg-info py-2 px-3 border-0" name="user_Login" />
-                  <p class="small fw-blod mt-2 pt-1 mb-0">Don't have an Account?
-                     <a href="user_registration.php" class="text-danger text-decoration-none"> Register</a>
+               <div class="mt-4 pt-2"  data-aos="fade-in">
+                  <input type="submit" value="Login" class="btn py-2 px-3 " name="user_Login" />
+                  <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an Account?
+                     <a href="user_registration.php" class="text-danger text-decoration-none fw-bold"> Register</a>
                   </p>
                </div>
-            </form>
          </div>
+
       </div>
-
-
-
-
    </div>
+   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 </body>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 </html>
 <?php
 @session_start();
@@ -64,6 +103,10 @@ if (isset($_POST['user_Login'])) {
    $result = mysqli_query($con, $select_query);
    $row_count = mysqli_num_rows($result);
    $row_data = mysqli_fetch_assoc($result);
+   
+   
+   
+    
    $user_ip = getIPAddress();
    //cart item
    $select_query_cart = "select * from `cart_details` where ip_address='$user_ip'";
@@ -80,13 +123,18 @@ if (isset($_POST['user_Login'])) {
          // echo"<script>alert('login sucessfully');</script>";
          if ($row_count == 1 and $row_count_cart == 0) {
             $_SESSION['username'] = $user_username;
-            
-            echo"<script>alert('login sucessful');</script>";
+            $user_id=$row_data['user_id'];
+             $_SESSION['user_order_id']=$user_id;
+   
+            echo "<script>alert('login sucessful');</script>";
             echo "<script>window.open('profile.php','_self');</script>";
          } else {
+            $user_id=$row_data['user_id'];
+           $_SESSION['user_order_id']=$user_id;
+   
             $_SESSION['username'] = $user_username;
 
-            echo"<script>alert('login sucessful');</script>";
+            echo "<script>alert('login sucessful');</script>";
             echo "<script>window.open('payment.php','_self');</script>";
          }
       } else {

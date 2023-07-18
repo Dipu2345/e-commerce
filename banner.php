@@ -33,21 +33,21 @@
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="./img/Banner1.png" class="d-block w-100 mainn" alt="...">
+        <img src="./img/titanban2.gif" class="d-block w-100 mainn" alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h5>First slide label</h5>
           <p>Some representative placeholder content for the first slide.</p>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="./img/Banner2.png" class="d-block w-100 mainn" alt="..." class="he">
+        <img src="./img/titanban1.gif" class="d-block w-100 mainn" alt="..." class="he">
         <div class="carousel-caption d-none d-md-block">
           <h5>Second slide label</h5>
           <p>Some representative placeholder content for the second slide.</p>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="./img/Banner1.png" class="d-block w-100 mainn" alt="...">
+        <img src="./img/banner3.webp" class="d-block w-100 mainn" alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h5>Third slide label</h5>
           <p>Some representative placeholder content for the third slide.</p>

@@ -15,35 +15,39 @@
       margin: auto;
       display: block;
     }
+    a{
+      text-decoration: none;
+    }
   </style>
 </head>
-
 <body>
   <?php
+  @session_start();
   include('../includes/connect.php');
   include('../functions/common_function.php');
   $user_ip = getIPAddress();
-  $get_user = "Select * from `user_table`where user_ip='$user_ip'";
+  $get_user_id=$_SESSION['user_order_id'];
+  $get_user = "Select * from `user_table`where user_id='$get_user_id'";
   $result = mysqli_query($con, $get_user);
   $run_query = mysqli_fetch_array($result);
   $user_id = $run_query['user_id'];
 
   ?>
   <div class="container">
-    <h2 class="text-center text-info">Payment options</h2>
+    <h2 class="text-center text-dark">Please Add Order To Your Account</h2>
     <div class="row d-flex justify-content-center align-items-center my-5">
       <div class="col-md-6">
-        <a href="https://wwww.paypal.com" target="_blank"><img src="../img/payment.jpg" alt="" class="payment_img"></a>
+        <a href="#" ><img src="../img/payment.jpg" alt="" class="payment_img"></a>
       </div>
       <div class="col-md-6">
         <a href="order.php?user_id=<?php echo $user_id ?>">
-          <h2 class="tect-center">pay offline</h2>
+          <h2 class="text-center">Add To Account</h2>
         </a>
       </div>
 
 
 
-      <h1>payment</h1>
+      
 </body>
 
 </html>

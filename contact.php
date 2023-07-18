@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact US</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
     <style>
         *{
     margin: 0;
@@ -105,10 +106,10 @@ tr td{
     <p>We would love to respond your queries and help you suceed. feel 
         free to get in touch with us.....
     </p>
-    <div class="contactact-box">
+    <div class="contactact-box"  data-aos="fade-in">
         <div class="contact-left">
             <h3>Sent Your request</h3>
-            <form  action="contact.php" method="post">
+            <form  action="" method="post">
                 <div class="input-row">
                     <div class="input-group">
                         <label for="">Name</label>
@@ -131,7 +132,7 @@ tr td{
                 </div>
                 <label>Message</label>
                 <textarea rows="5"placeholder="write your query" name="desc"></textarea>
-                <button type="submit" name="send">SEND</button>
+                <button type="submit" name="submit" value="submit" class='button'>Submit</button>
             </form>
            
 
@@ -159,10 +160,28 @@ tr td{
     </div>
     
 </body>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 </html>
 <?php
-if(isset($_POST['send'])){
-    
+if(isset($_POST['submit'])){
+    include('./includes/connect.php');
+    $name=$_POST['name'];
+    $phone=$_POST['mobile'];
+    $email=$_POST['mail'];
+    $query=$_POST['query'];
+    $msg=$_POST['desc'];
+
+    $query="INSERT INTO contact VALUES('$name','$phone',' $email',' $query',' $msg')";
+    $run=mysqli_query($con,$query);
+    if($run){
+     echo "<script>alert('we will reach to you soon')</script>";
+    }
+    else{
+        echo "<script>alert('sorry! Try Again')</script>";
+    }
 }
 
 ?>

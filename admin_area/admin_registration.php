@@ -77,7 +77,7 @@ if(isset($_POST["admin_registration"])){
                      <label for="username" class="form-label">Username</label>
                      <input type="text" id="username" name="username" 
                      placeholder="Enter your username" required="required"
-                     class="form-control">
+                     class="form-control" >
                 </div>
                 <div class="form-outline mb-4">
                      <label for="email" class="form-label">Email</label>
@@ -93,8 +93,8 @@ if(isset($_POST["admin_registration"])){
                 </div>
                 <div class="form-outline mb-4">
                      <label for="confirm_password" class="form-label">Confirm password</label>
-                     <input type="confirm_password" id="confirm_password" name="confirm_password" 
-                     placeholder="Enter your confirm_password" required="required"
+                     <input type="password" id="confirm_password" name="confirm_password" 
+                     placeholder="Enter your confirm password" required="required"
                      class="form-control">
                 </div>
                 <input type="submit" class="bg-info py-2 px-3 border=0" name="admin_registration" value="Register"/>

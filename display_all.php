@@ -11,15 +11,22 @@ session_start();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Go cart</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="./index.css">
     <style>
         .text {
+            
       font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
       padding: 0px 10px;
-      
+      background:linear-gradient(to left,#515153,#9f9fa1);
       color: white;
+      border-radius: 10px;
+      padding:0px 20px;
+      margin-right: 15px;
+     
+    
       
     }
     .navbar{
@@ -69,6 +76,14 @@ session_start();
     color:   white;
     cursor:not-allowed;
 }
+@keyframes fade-inout{
+          0%{opacity: 0;}
+          100%{opacity: 1;}
+
+        }
+        .inout{
+          animation: fade-inout 4s infinite alternate ;
+        }
     </style>
 
 </head>
@@ -157,13 +172,13 @@ session_start();
     </div>
     <!-----third child-->
     <div class="bg-light">
-        <h3 class="text-center bounce lin fw-bold">Trending</h3>
-        <p class="text-center cursive bounce lin  fw-bold">Communications is the heart of e-commerce and community</p>
+        <h3 class="text-center inout lin fw-bold">Trending</h3>
+        <p class="text-center cursive inout lin  fw-bold">Communications is the heart of e-commerce and community</p>
     </div>
     <!---fourth child-->
 
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-10"  data-aos="fade-in">
             <!--products-->
             <div class="row">
                 <!---fetching products--->
@@ -218,6 +233,10 @@ session_start();
     </div>
 
     <!--bootstrap js link-->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
 

@@ -17,11 +17,13 @@ session_start();
     .text {
       font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
       padding: 0px 10px;
-      
+      background:linear-gradient(to left,#515153,#9f9fa1);
       color: white;
-      
+      border-radius: 10px;
+      padding:0px 20px;
+      margin-right: 15px;
+     
     }
-
     .pa-1 {
       padding: 0px 10px;
     }
@@ -172,10 +174,10 @@ session_start();
   <!--last child----->
 
   <!--include footer-->
-  <?php include("../includes/footer.php")  ?> 
+  
 
   </div>
- 
+  <?php include("../includes/footer.php")  ?> 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
 

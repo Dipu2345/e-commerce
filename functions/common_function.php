@@ -290,7 +290,7 @@ function view_details()
     <!-- related images-->
                  <div class='row'>
                       <div class='col-md-12'>
-                         <h4 class='text-center text-info mb-5'>Related product</h4>
+                         <h4 class='text-center text-info mb-5'>Related Image</h4>
                       </div>
                   <div class='col-md-6 hov'>
                       <img src='./admin_area/product_images/$product_image2' class='card-img-top' alt='$product_title'>

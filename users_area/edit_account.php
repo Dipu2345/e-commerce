@@ -49,29 +49,34 @@ if (isset($_GET['edit_account'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit account</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
 </head>
 
 <body>
     <h3 class="text-center text-success mb-4">Edit Account</h3>
     <form action="" method="post" enctype="multipart/form-data">
-        <div class="form-outline mb-4">
+        <div class="form-outline mb-4"  data-aos="fade-in">
             <input type="text" class="from.control w-50 m-auto" value="<?php echo  $user_name ?>" name="user_username">
         </div>
-        <div class="form-outline mb-4">
+        <div class="form-outline mb-4"  data-aos="fade-in">
             <input type="email" class="from.control w-50 m-auto" value="<?php echo  $user_email ?>" name="user_email">
         </div>
-        <div class="form-outline mb-4 d-flex w-50 m-auto">
+        <div class="form-outline mb-4 d-flex w-50 m-auto"  data-aos="fade-in">
             <input type="file" class="from.control w-50 m-auto" name="user_image">
             <img src="./user_images/<?php echo $user_image ?>" alt="" class="edit_image">
         </div>
-        <div class="form-outline mb-4">
+        <div class="form-outline mb-4"  data-aos="fade-in">
             <input type="text" class="from.control w-50 m-auto" value="<?php echo  $user_address ?>" name="user_address">
         </div>
-        <div class="form-outline mb-4">
+        <div class="form-outline mb-4"  data-aos="fade-in">
             <input type="text" class="from.control w-50 m-auto" value="<?php echo  $user_mobile ?>" name="user_mobile">
         </div>
         <input type="submit" value="Update" class="bg-info py-2 px-3 border-0" name="user_Update">
     </form>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 </body>
 
 </html>

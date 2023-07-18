@@ -11,16 +11,20 @@ session_start();
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Welcome <?php echo $_SESSION['username'] ?></title>
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="../index.css">
   <style>
-     .text {
+    .text {
       font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
       padding: 0px 10px;
-      
+      background:linear-gradient(to left,#515153,#9f9fa1);
       color: white;
-      
+      border-radius: 10px;
+      padding:0px 20px;
+      margin-right: 15px;
+     
     }
 
     .pa-1 {
@@ -73,6 +77,24 @@ session_start();
       height: 100px;
       object-fit: contain;
     }
+    @keyframes fade-inout{
+          0%{opacity: 0;}
+          100%{opacity: 1;}
+
+        }
+        .inout{
+          animation: fade-inout 4s infinite alternate ;
+        }
+        .lin{
+    background: linear-gradient(15deg,red,blue);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.t-price{
+    color:   white;
+    cursor:not-allowed;
+}
+
   </style>
 </head>
 
@@ -89,7 +111,7 @@ session_start();
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 pa-1">
             <li class="nav-item">
-              <a class="nav-link active fw-bold" aria-current="page" href="../index.php">Home</a>
+              <a class="nav-link fw-bold" aria-current="page" href="../index.php">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link fw-bold" href="../display_all.php">Products</a>
@@ -98,13 +120,13 @@ session_start();
               <a class="nav-link fw-bold" href="profile.php">My Account</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link fw-bold" href="./contact.php">contact</a>
+              <a class="nav-link fw-bold" href="../contact.php">contact</a>
             </li>
             <li class="nav-item">
               <a class="nav-link fw-bold" href="../cart.php"><i class="fa-solid fa-cart-shopping"></i><sup><?php cart_item(); ?></sup>Cart</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link fw-bold" href="#">Total price: <?php total_cart_price(); ?>/-</a>
+              <a class="nav-link fw-bold t-price" href="#">Total price: <?php total_cart_price(); ?>/-</a>
             </li>
           </ul>
           <form class="d-flex" action="../search_product.php" method="get">
@@ -154,16 +176,16 @@ session_start();
   </div>
   <!-----third child-->
   <div class="bg-light lh">
-    <h3 class="text-center lh">Trending</h3>
-    <p class="text-center fw-bold cursive lh">Communications is the heart of e-commerce and community</p>
+    <h3 class="text-center lh fw-bold lin inout">Trending</h3>
+    <p class="text-center fw-bold cursive lh lin inout">Communications is the heart of e-commerce and community</p>
   </div>
   <!--fourth child-->
   <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-2"  data-aos="fade-in">
       <ul class="navbar-nav bg-secondary text-center" style="height:100vh">
-        <li class="nav-item ">
+        <li class="nav-item " >
           <a class="nav-link text-light" href="#">
-            <h4>Your Profile<h4>
+            <h4 class="fw-bold lin inout">Your Profile<h4>
           </a>
         </li>
         <?php
@@ -226,6 +248,10 @@ session_start();
   <?php include("../includes/footer.php")  ?>
 
   </div>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
 

@@ -16,7 +16,7 @@ if(isset($_POST['submit'])){
     $product_image1=$_FILES['product_image1']['name'];
      $product_image2=$_FILES['product_image2']['name'];
     $product_image3=$_FILES['product_image3']['name'];
-   
+
    //acessing image temp name
     $temp_image1=$_FILES['product_image1']['tmp_name'];
     $temp_image2=$_FILES['product_image2']['tmp_name'];
@@ -27,13 +27,13 @@ if(isset($_POST['submit'])){
   or $product_brands==''or $product_price==''or $product_image1=='' or $product_image2==''
   or $product_image3==''){
       echo "<script>alert('plese fill all the fields')</script>";
-      exit();
+      // exit();
   }
   else{
     move_uploaded_file($temp_image1,"./product_images/$product_image1");
     move_uploaded_file($temp_image2,"./product_images/$product_image2");
     move_uploaded_file($temp_image3,"./product_images/$product_image3");
-    
+
     //insert_query
     $insert_products="INSERT INTO `products`(product_title,product_description,	product_keywords,	category_id,
         brand_id,product_image1,product_image2,product_image3,product_price,date,status) VALUES('$product_title',
@@ -62,103 +62,113 @@ if(isset($_POST['submit'])){
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>insert products</title>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style>
-  .formm{
-    border: 2px solid black;
-  }
-  
-</style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .formm {
+      border: 2px solid black;
+    }
+  </style>
 
-  </head>
+</head>
 
 
 <body class="bg-light">
-      <div class="container mt-3">
-       
-        <form action="insert_product.php" method="post" enctype="multipart/form-data" class="formm">
-        <h1 class="text-center">Insert Products</h1>
-          <div class="form-outline mb-4 w-50 m-auto ">
-            <!---title-->
-           <label for="product_title" class="form-label">product title</label>
-           <input type="text" name="product_title" id="product_title" class="form-control" autocomplete="off" >
-            </div>
-            <!---description-->
-            <div class="form-outline mb-4 w-50 m-auto">
-                <label for="description" class="form-label"> product Description</label>
-                <input type="text" name="description" id="description" class="form-control" autocomplete="off" >
-            </div>
-            <!---keywords-->
-            <div class="form-outline mb-4 w-50 m-auto">
-                <label for="product_keywords" class="form-label"> product Keywords</label>
-                <input type="text" name="product_keywords" id="product_keywords" class="form-control" autocomplete="off" >
-            </div>
-             <!---categories-->
-             <div class="form-outline mb-4 w-50 m-auto">
-                <select name="product_category" id="" class="form-select">
-                    <option value="">select a category</option>
-                    <?php
-                         $select_query="Select * from `categories`";
-                         $result_query=mysqli_query($con,$select_query);
-                          while($row=mysqli_fetch_assoc($result_query)){
-                            $category_title=$row['category_title'];
-                            $category_id=$row['category_id'];
-                            echo "<option value=' $category_id'>$category_title</option>";
-                          }
-                          ?>
-                </select>
-               </div>
-            <!---brands-->
-            <div class="form-outline mb-4 w-50 m-auto">
-                <select name="product_brands" id="" class="form-select">
-                    <option value="">select a brands</option>
-                    <?php
-                         $select_query="Select * from `brands`";
-                         $result_query=mysqli_query($con,$select_query);
-                          while($row=mysqli_fetch_assoc($result_query)){
-                            $brand_title=$row['brand_title'];
-                            $brand_id=$row['brand_id'];
-                            echo "<option value=' $brand_id'>$brand_title</option>";
-                          }
-                          ?>
-          </select>
-             </div>
-              <!---image1-->
-            <div class="form-outline mb-4 w-50 m-auto">
-                <label for="product_image1" class="form-label"> product Image 1</label>
-                <input type="file" name="product_image1" id="product_image1" class="form-control" autocomplete="off" >
-            </div>
-            <!---image2-->
-            <div class="form-outline mb-4 w-50 m-auto">
-                <label for="product_image2" class="form-label"> product Image 2</label>
-                <input type="file" name="product_image2" id="product_image2" class="form-control" autocomplete="off" >
-            </div>
-            <!---image3-->
-            <div class="form-outline mb-4 w-50 m-auto">
-                <label for="product_image3" class="form-label"> product Image 3</label>
-                <input type="file" name="product_image3" id="product_image3" class="form-control" autocomplete="off" >
-            </div>
-             <!---price-->
-             <div class="form-outline mb-4 w-50 m-auto">
-                <label for="product_price" class="form-label"> product Price</label>
-                <input type="text" name="product_price" id="product_price" class="form-control" autocomplete="off">
-            </div>
-           <div class="form-outline mb-4 w-50 m-auto">
-             <input type="submit" name="submit" class="btn btn-info mb-3 px-3" value="Insert Products">
-         
-         </div>
+  <div class="container mt-3">
 
+    <form action="insert_product.php" method="post" enctype="multipart/form-data" class="formm" onclick="return">
+      <h1 class="text-center">Insert Products</h1>
+      <div class="form-outline mb-4 w-50 m-auto ">
+        <!---title-->
 
-        </form>
-
-
+        <label for="product_title" class="form-label">product title</label>
+        <input type="text" name="product_title" id="product_title" class="form-control" autocomplete="off" placeholder="Please Enter Product Name">
+        <span id="error" class="text-danger" ></span>
+      </div>
+      <!---description-->
+      <div class="form-outline mb-4 w-50 m-auto">
+        <label for="description" class="form-label"> product Description</label>
+        <input type="text" name="description" id="description" class="form-control" autocomplete="off"placeholder="Please Enter Product description">
+        <span id="desc_error" class="text-danger"></span>
+      </div>
+      <!---keywords-->
+      <div class="form-outline mb-4 w-50 m-auto">
+        <label for="product_keywords" class="form-label"> product Keywords</label>
+        <input type="text" name="product_keywords" id="product_keywords" class="form-control" autocomplete="off"placeholder="Please Enter Product keyword Separated By comma">
+        <span id="keyword_error" class="text-danger"></span>
+      </div>
+      <!---categories-->
+      <div class="form-outline mb-4 w-50 m-auto">
+        <select name="product_category" id="category" class="form-select">
+          <option value="">select a category</option>
+          <?php
+           $select_query="Select * from `categories`";
+           $result_query=mysqli_query($con,$select_query);
+            while($row=mysqli_fetch_assoc($result_query)){
+              $category_title=$row['category_title'];
+              $category_id=$row['category_id'];
+              echo "<option value=' $category_id'>$category_title</option>";
+            }
+          ?>
+        </select>
+        <span id="category_error"></span>
+      </div>
+      <!---brands-->
+      <div class="form-outline mb-4 w-50 m-auto">
+        <select name="product_brands" id="" class="form-select">
+          <option value="">select a brands</option>
+          <?php
+           $select_query="Select * from `brands`";
+           $result_query=mysqli_query($con,$select_query);
+            while($row=mysqli_fetch_assoc($result_query)){
+              $brand_title=$row['brand_title'];
+              $brand_id=$row['brand_id'];
+              echo "<option value=' $brand_id'>$brand_title</option>";
+            }
+          ?>
+        </select>
+      </div>
+      <!---image1-->
+      <div class="form-outline mb-4 w-50 m-auto">
+        <label for="product_image1" class="form-label"> product Image 1</label>
+        <input type="file" name="product_image1" id="product_image1" class="form-control" autocomplete="off">
+        <span id ="span_error"></span>
+      </div>
+      <!---image2-->
+      <div class="form-outline mb-4 w-50 m-auto">
+        <label for="product_image2" class="form-label"> product Image 2</label>
+        <input type="file" name="product_image2" id="product_image2" class="form-control" autocomplete="off">
+      </div>
+      <!---image3-->
+      <div class="form-outline mb-4 w-50 m-auto">
+        <label for="product_image3" class="form-label"> product Image 3</label>
+        <input type="file" name="product_image3" id="product_image3" class="form-control" autocomplete="off">
+      </div>
+      <!---price-->
+      <div class="form-outline mb-4 w-50 m-auto">
+        
+        <label for="product_price" class="form-label"> product Price</label>
+        <input type="text" name="product_price" id="product_price" class="form-control" autocomplete="off" placeholder="Please Enter Price">
+        <p id="price_error"></p>
+      </div>
+      <div class="form-outline mb-4 w-50 m-auto">
+        <input type="submit" id="submit_btn" name="submit" class="btn btn-info mb-3 px-3" value="Insert Products">
 
       </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-    crossorigin="anonymous"></script>
+
+
+    </form>
+
+
+
+  </div>
+  
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+  <script src="validate.js"></script>
 </body>
 
 </html>

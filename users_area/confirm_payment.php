@@ -4,6 +4,7 @@ session_start();
 if (isset($_GET['order_id'])) {
     $order_id = $_GET['order_id'];
     //echo $order_id;
+    $_SESSION['order_id']=$order_id;
     $select_data = "Select * from user_orders where order_id='$order_id'";
     $result = mysqli_query($con, $select_data);
     $row_fetch = mysqli_fetch_assoc($result);
@@ -30,6 +31,10 @@ if (isset($_POST['confirm_payment'])) {
     if($result_orders){
         echo "<script>alert('updated sucessfully')</script>";
     }
+    if(isset($_POST['confirm_payment'])){
+      
+       header('http://localhost/tact_project/users_area/razpayment/alerts/success.php');
+    }
 }
 
 
@@ -45,9 +50,47 @@ if (isset($_POST['confirm_payment'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment page</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
     <!--bootstreap css link-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <style>
+        .input-button{
+       
+       border-radius: 5px;
+       color: white;
+       background-color: white;
+       transition: 0.3s;
+       border: none;
+       font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+       text-decoration: none;
+       padding: 5px 20px;
+     
+
+   }
+   .input-button:hover{
+       background-color: lightsalmon;
+       transition: 0.3s;
+       color: white;
+
+   }
+   .flex{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   }
+   .clr{
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+   }
+   .clt:hover{
+    color: whitesmoke;
+   }
+    </style>
+
+
 </head>
+
 
 <body class="bg-secondary">
 
@@ -64,18 +107,16 @@ if (isset($_POST['confirm_payment'])) {
             <div class="form-outline my-4 text-center  w-50 m-auto">
                 <select name="payment_mode" class="form-select w-50 m-auto">
                     <option selected>Select Payment Mode</option>
-                    <option>UPI</option>
-                    <option>Netbanking</option>
-                    <option>Paypal</option>
                     <option>Cash on Delivery</option>
-                    <option>Payoffline</option>
-
                 </select>
             </div>
             <div class="form-outline my-4 text-center  w-50 m-auto">
                 <input type="Submit" class="bg-info py-2 px-3 border-0" value="Confirm" name="confirm_payment">
             </div>
         </form>
+        <div class="flex">
+        <button name="razorpay" class="input-button"> <a class="clr" href="./razpayment/checkout.php?order_id=<?php echo $order_id;?>">Pay With Razorpay</a></button> 
+        </div>
     </div>
 
 </body>

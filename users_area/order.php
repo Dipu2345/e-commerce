@@ -3,6 +3,7 @@ include('../includes/connect.php');
 include('../functions/common_function.php');
 if(isset($_GET['user_id'])){
     $user_id=$_GET['user_id'];
+    
 
 }
 
@@ -40,10 +41,11 @@ if($quantity==0){
         $subtotal=$total_price*$quantity;
     }
 
-    $insert_orders="Insert into `user_orders`(user_id,amount_due,invoice_number,total_products,order_date,order_status)values($user_id,$subtotal,$invoice_number, $count_products ,NOW(),'$status')";
+    $insert_orders="Insert into `user_orders`(user_id,amount_due,invoice_number,total_products,
+    order_date,order_status)values($user_id,$subtotal,$invoice_number, $quantity ,NOW(),'$status')";
     $result=mysqli_query($con,$insert_orders)or die("query eror");
     if($result){
-        echo"<script>alert('orders are submitted successfully')</script>";
+        echo"<script>alert(' ORDER ADDED TO ACCOUNT Plese Confirm The Payment')</script>";
         echo"<script>window.open('profile.php','_self')</script>";
 }
 

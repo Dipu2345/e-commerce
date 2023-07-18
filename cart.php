@@ -11,7 +11,7 @@ session_start();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Go cart-Cart details</title>
-
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!--css file-->
@@ -36,10 +36,16 @@ session_start();
         background-color: rgb(40, 40, 204);
        }
        .text {
+        
       font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
       padding: 0px 10px;
-      
+      background:linear-gradient(to left,#515153,#9f9fa1);
       color: white;
+      border-radius: 10px;
+      padding:0px 20px;
+      margin-right: 15px;
+     
+   
       
     }
    .font-color{
@@ -113,6 +119,14 @@ session_start();
        
 
     }
+    @keyframes fade-inout{
+          0%{opacity: 0;}
+          100%{opacity: 1;}
+
+        }
+        .inout{
+          animation: fade-inout 4s infinite alternate ;
+        }
     </style>
 </head>
 
@@ -198,8 +212,8 @@ session_start();
     </div>
     <!-----third child-->
     <div class="bg-light">
-        <h3 class="text-center">Hiden Store</h3>
-        <p class="text-center fw-bold cursive">Communications is the heart of e-commerce and community</p>
+        <h3 class="text-center fw-bold inout">Hiden Store</h3>
+        <p class="text-center fw-bold cursive inout">Communications is the heart of e-commerce and community</p>
     </div>
 
 
@@ -207,7 +221,7 @@ session_start();
 
     <!--fourth child-table-->
     <div class="container">
-        <div class="row">
+        <div class="row"  data-aos="fade-in">
             <form action="cart.php" method="post" class="m-0">
             <table class="table table-bordered text-center">
                 
@@ -254,7 +268,7 @@ session_start();
                                 <?php
                                    
                                    
-                                    if(isset($_POST['update'])){
+                                    if(isset($_POST['update_cart'])){
                                         
                                         $get_ip_add = getIPAddress();
                                           $quantities=$_POST["quantity"];
@@ -277,7 +291,7 @@ session_start();
                                 <td><input type="checkbox" name="removeitem[]" value="<?php 
                                 echo $product_id;?>"></td>
                                 <td>
-                                     <input type="submit" value="update_cart" class=" input-button px-3 py-2 mb-1 border-0 mx-3" name="update"> 
+                                     <input type="submit" value="update_cart" class=" input-button px-3 py-2 mb-1 border-0 mx-3" name="update_cart"> 
                                     <!-- <button class="bg-info px-3 py-2 border-0 mx-3" name="update_cart" value="update_cart">Update</button>
                                     <button class="bg-info px-3 py-2 border-0 mx-3">Remove</button> -->
                                     <input type="submit" value="remove_cart" class=" input-button px-3 py-2 border-0 mx-3" name="remove"> 
@@ -355,7 +369,10 @@ session_start();
 
       
     <!--bootstrap js link-->
-   
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 
     <div class="foot">

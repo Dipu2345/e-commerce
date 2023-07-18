@@ -6,7 +6,7 @@ if(!isset($_SESSION['username'])){
 ?>
 
 
-<h3 class="text-center.text-sucess">All orders</h3>
+<h3 class="text-center.text-sucess text-center fw-bold ">All orders</h3>
 <table class="table table-bordered mt-5">
    <thead class="bg-infoo">
 
@@ -36,7 +36,7 @@ if($row_count==0){
 
 $numbers=0;
     while($row_data=mysqli_fetch_assoc($result)){
-        echo $order_id=$row_data['order_id'];
+        $order_id=$row_data['order_id'];
         $user_id=$row_data['user_id'];
         $amount_due=$row_data['amount_due'];
         $invoice_number=$row_data['invoice_number'];

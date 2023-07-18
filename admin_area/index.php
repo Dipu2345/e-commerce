@@ -24,6 +24,16 @@ session_start();
     <!--css file-->
     <link rel="stylesheet" href="../index.css">
     <style>
+        .text {
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      padding: 0px 10px;
+      background:linear-gradient(to left,#515153,#9f9fa1);
+      color: white;
+      border-radius: 10px;
+      padding:0px 20px;
+      margin-right: 15px;
+     
+    }
         .admin_image {
             width: 100px;
             object-fit: contain;

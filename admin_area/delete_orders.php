@@ -1,7 +1,7 @@
 
 <?php
 
-echo "order";
+// echo "order";
 include('../includes/connect.php');
 if(isset($_GET['delete_orders'])){
      $delete_order=$_GET['delete_orders'];
